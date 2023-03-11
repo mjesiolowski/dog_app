@@ -96,6 +96,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  padding: 12px;
 }
 
 a {

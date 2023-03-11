@@ -4,7 +4,7 @@ import React from 'react';
 import { App } from '@/app/components/App';
 import { fetchData, parseDogAPIResponseToGetBreedList } from '@/app/helpers';
 import { DOG_API_URL } from '@/app/constants/constants';
-import { BreedList, DogListApiResponse } from '@/app/components/App.types';
+import { DogListApiResponse, ParsedBreedList } from '@/app/components/App/App.types';
 
 export async function getStaticProps() {
   try {
@@ -27,7 +27,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function Home({ breedList }: {breedList: BreedList}) {
+export default function Home({ breedList }: {breedList: ParsedBreedList}) {
   return (
     <>
       <Head>
