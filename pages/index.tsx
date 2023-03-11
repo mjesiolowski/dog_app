@@ -3,12 +3,12 @@ import Head from 'next/head';
 import React from 'react';
 import { App } from '@/app/components/App';
 import { fetchData, parseDogAPIResponseToGetBreedList } from '@/app/helpers';
-import { DOG_API_URL } from '@/app/constants/constants';
+import { BREED_LIST_API_URL } from '@/app/constants/constants';
 import { DogListApiResponse, ParsedBreedList } from '@/app/components/App/App.types';
 
 export async function getStaticProps() {
   try {
-    const rawData = await fetchData<DogListApiResponse>(DOG_API_URL);
+    const rawData = await fetchData<DogListApiResponse>(BREED_LIST_API_URL);
     const breedList = parseDogAPIResponseToGetBreedList(rawData.message);
 
     return {

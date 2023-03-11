@@ -4,14 +4,14 @@ import { ButtonGroupProps as MuiButtonGroupProps } from '@mui/material';
 
 type ButtonGroupProps = {
   items: Array<string>;
-  handleItemClick: (item: string) => void;
+  onItemClick: (item: string) => void;
   selectedItem?: string;
   selectedItemVariant?: MuiButtonGroupProps['variant']
 } & MuiButtonGroupProps
 
 export function ButtonGroup({
   items = [],
-  handleItemClick,
+  onItemClick,
   variant,
   selectedItem,
   selectedItemVariant,
@@ -25,7 +25,7 @@ export function ButtonGroup({
       {items.map((itemName) => (
         <Button
           key={itemName}
-          onClick={() => handleItemClick(itemName)}
+          onClick={() => onItemClick(itemName)}
           variant={itemName === selectedItem ? selectedItemVariant : variant}
         >
           {itemName}

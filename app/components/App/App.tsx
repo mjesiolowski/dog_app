@@ -1,26 +1,36 @@
 import { useCallback, useMemo, useState } from 'react';
-import { genCharArray } from '@/app/helpers';
-import { ButtonGroup } from '../ButtonGroup';
+import { genCharArray, getRandomDogImageUrl } from '@/app/helpers';
+import { ButtonGroup as AlphabetButtons, ButtonGroup as BreedListButtons } from '../ButtonGroup';
 import { ParsedBreedList } from './App.types';
-import { BreedListButtons } from '../BreedListButtons';
+import { BreedDetailsModal } from '../BreedDetailsModal';
+import { AppWrapper } from './App.styles';
 
 export function App({ breedList } : {breedList: ParsedBreedList}) {
   const [clickedLetter, setClickedLetter] = useState('');
+  const [selectedBreed, setSelectedBreed] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const alphabetList = useMemo(() => genCharArray('a', 'z'), []);
 
   const handleAlphabetLetterClick = useCallback((letter: string) => {
     setClickedLetter(letter);
+
+    if (letter !== clickedLetter) {
+      setSelectedBreed('');
+    }
   }, []);
 
-  const breedListFilterByClickedLetter = breedList[clickedLetter];
+  const handleBreedNameClick = useCallback((breedName: string) => {
+    setSelectedBreed(breedName);
+    setIsModalOpen(true);
+  }, []);
 
   return (
-    <main>
+    <AppWrapper>
       <h1>Dog App</h1>
-      <ButtonGroup
+      <AlphabetButtons
         items={alphabetList}
-        handleItemClick={handleAlphabetLetterClick}
+        onItemClick={handleAlphabetLetterClick}
         selectedItem={clickedLetter}
         variant="outlined"
         selectedItemVariant="contained"
@@ -30,7 +40,24 @@ export function App({ breedList } : {breedList: ParsedBreedList}) {
           padding: '12px 0',
         }}
       />
-      <BreedListButtons breedList={breedListFilterByClickedLetter} />
-    </main>
+      <BreedListButtons
+        items={breedList[clickedLetter]}
+        onItemClick={handleBreedNameClick}
+        selectedItem={selectedBreed}
+        variant="outlined"
+        selectedItemVariant="contained"
+        orientation="vertical"
+      />
+
+      {isModalOpen && selectedBreed ? (
+        <BreedDetailsModal
+          isOpen={isModalOpen}
+          handleClose={() => setIsModalOpen(false)}
+          apiUrl={getRandomDogImageUrl(selectedBreed.split(' - '))}
+          breedName={selectedBreed}
+        />
+      ) : null}
+
+    </AppWrapper>
   );
 }

@@ -1,0 +1,1 @@
+export { BreedDetailsModal } from './BreedDetailsModal';
