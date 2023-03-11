@@ -1,16 +1,15 @@
-import { useCallback, useMemo, useState } from 'react';
-import { genCharArray, getRandomDogImageUrl } from '@/app/helpers';
-import { ButtonGroup as AlphabetButtons, ButtonGroup as BreedListButtons } from '../ButtonGroup';
+import { useCallback, useState } from 'react';
+import { getRandomDogImageUrl } from '@/app/helpers';
+import { ButtonGroup as BreedListButtons } from '../ButtonGroup';
 import { ParsedBreedList } from './App.types';
 import { BreedDetailsModal } from '../BreedDetailsModal';
 import { AppWrapper } from './App.styles';
+import { AlphabetButtons } from '../AlphabetButtons';
 
 export function App({ breedList } : {breedList: ParsedBreedList}) {
   const [clickedLetter, setClickedLetter] = useState('');
   const [selectedBreed, setSelectedBreed] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const alphabetList = useMemo(() => genCharArray('a', 'z'), []);
 
   const handleAlphabetLetterClick = useCallback((letter: string) => {
     setClickedLetter(letter);
@@ -29,16 +28,8 @@ export function App({ breedList } : {breedList: ParsedBreedList}) {
     <AppWrapper>
       <h1>Dog App</h1>
       <AlphabetButtons
-        items={alphabetList}
         onItemClick={handleAlphabetLetterClick}
         selectedItem={clickedLetter}
-        variant="outlined"
-        selectedItemVariant="contained"
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          padding: '12px 0',
-        }}
       />
       <BreedListButtons
         items={breedList[clickedLetter]}
