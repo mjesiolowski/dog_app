@@ -5,3 +5,5 @@ export async function fetchData<T>(url: string): Promise<T> {
 
   return response.data;
 }
+
+export const capitalizeFirstLetter = (string: string) => string[0].toUpperCase() + string.slice(1);

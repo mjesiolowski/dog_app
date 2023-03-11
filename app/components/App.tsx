@@ -1,9 +1,8 @@
 import Button from '@mui/material/Button';
-import { DogItems } from './App.types';
+import { BreedList } from './App.types';
 
-export function App({ dogsList } : DogItems) {
-  console.log({ dogsList });
-
+export function App({ breedList } : {breedList: BreedList}) {
+  console.log({ breedList });
   return (
     <main>
       <h1>Dog App</h1>

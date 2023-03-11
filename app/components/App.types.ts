@@ -1,6 +1,7 @@
-export type DogItems = { [key: string]: Array<string> }
+export type BreedList = Array<string>
+export type AllBreedsAPIData = { [key: string]: BreedList }
 
 export type DogListApiResponse = {
-  message: DogItems,
+  message: AllBreedsAPIData,
   status: string
 }

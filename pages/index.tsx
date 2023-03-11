@@ -2,31 +2,32 @@ import Head from 'next/head';
 
 import React from 'react';
 import { App } from '@/app/components/App';
-import { fetchData } from '@/app/helpers';
+import { fetchData, parseDogAPIResponseToGetBreedList } from '@/app/helpers';
 import { DOG_API_URL } from '@/app/constants/constants';
-import { DogItems, DogListApiResponse } from '@/app/components/App.types';
+import { BreedList, DogListApiResponse } from '@/app/components/App.types';
 
 export async function getStaticProps() {
   try {
-    const data = await fetchData<DogListApiResponse>(DOG_API_URL);
+    const rawData = await fetchData<DogListApiResponse>(DOG_API_URL);
+    const breedList = parseDogAPIResponseToGetBreedList(rawData.message);
 
     return {
       props: {
-        dogsList: data.message,
+        breedList,
         isError: false,
       },
     };
   } catch (e) {
     return {
       props: {
-        dogsList: {},
+        breedList: {},
         isError: true,
       },
     };
   }
 }
 
-export default function Home({ dogsList }: DogItems) {
+export default function Home({ breedList }: {breedList: BreedList}) {
   return (
     <>
       <Head>
@@ -35,7 +36,7 @@ export default function Home({ dogsList }: DogItems) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <App dogsList={dogsList} />
+      <App breedList={breedList} />
     </>
   );
 }
