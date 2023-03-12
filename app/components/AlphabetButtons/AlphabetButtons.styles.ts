@@ -4,9 +4,10 @@ import { ButtonGroup } from '../ButtonGroup';
 export const AlphabetButtonsWrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   gap: 12px;
   padding: 12px 0;
-  justify-content: center;
+  align-items: center;
 `;
 
 export const StyledButtonGroup = styled(ButtonGroup)`
