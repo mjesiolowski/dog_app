@@ -46,7 +46,7 @@ export function BreedDetailsModal({
           <>
             <h2>{breedName.toUpperCase()}</h2>
             <ModalImageWrapper>
-              {isLoading ? <h2>{LOADING_MESSAGE}</h2> : (
+              {isLoading || !imageUrl ? <h2>{LOADING_MESSAGE}</h2> : (
                 <NextImage
                   fill
                   style={{ objectFit: 'contain' }}
