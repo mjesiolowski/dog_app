@@ -31,11 +31,13 @@ export function App({ breedList } : {breedList: ParsedBreedList}) {
         onItemClick={handleAlphabetLetterClick}
         selectedItem={clickedLetter}
       />
-      <BreedListButtons
-        items={breedList[clickedLetter]}
-        onItemClick={handleBreedNameClick}
-        selectedItem={selectedBreed}
-      />
+      {clickedLetter ? (
+        <BreedListButtons
+          items={breedList[clickedLetter]}
+          onItemClick={handleBreedNameClick}
+          selectedItem={selectedBreed}
+        />
+      ) : null}
 
       {isModalOpen && selectedBreed ? (
         <BreedDetailsModal
