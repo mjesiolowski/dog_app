@@ -4,18 +4,7 @@ import { useEffect, useState } from 'react';
 import NextImage from 'next/image';
 import { Button } from '@mui/material';
 import { ModalContentWrapper, ModalImageWrapper, StyledModal } from './BreedDetailsModal.styles';
-
-type BreedDetailsApiData = {
-  message: string;
-  status: string
-}
-
-type BreedDetailsModalProps = {
-  isOpen: boolean,
-  handleClose: () => void,
-  apiUrl: string,
-  breedName: string,
-}
+import { BreedDetailsApiData, BreedDetailsModalProps } from './BreedDetailsModal.types';
 
 export function BreedDetailsModal({
   isOpen,

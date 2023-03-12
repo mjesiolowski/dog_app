@@ -1,13 +1,6 @@
 import Button from '@mui/material/Button';
 import MuiButtonGroup from '@mui/material/ButtonGroup';
-import { ButtonGroupProps as MuiButtonGroupProps } from '@mui/material';
-
-type ButtonGroupProps = {
-  items: Array<string>;
-  onItemClick: (item: string) => void;
-  selectedItem?: string;
-  selectedItemVariant?: MuiButtonGroupProps['variant']
-} & MuiButtonGroupProps
+import { ButtonGroupProps } from './ButtonGroup.types';
 
 export function ButtonGroup({
   items = [],

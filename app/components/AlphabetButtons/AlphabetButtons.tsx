@@ -1,11 +1,7 @@
 import { genCharArray } from '@/app/helpers';
 import { useMemo } from 'react';
 import { StyledButtonGroup } from './AlphabetButtons.styles';
-
-type AlphabetButtonsProps = {
-  onItemClick: (letter: string) => void,
-  selectedItem: string,
-}
+import { AlphabetButtonsProps } from './AlphabetButtons.types';
 
 export function AlphabetButtons({
   onItemClick,
