@@ -33,4 +33,5 @@ export const ModalImageWrapper = styled.div`
 export const ModalImage = styled.img`
   object-fit: contain;
   height: 100%;
+  width: 100%;
 `;
