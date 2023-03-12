@@ -34,5 +34,6 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
     'react/require-default-props': 'off',
+    'jsx-a11y/img-redundant-alt': 'off',
   },
 };

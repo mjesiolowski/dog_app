@@ -29,3 +29,8 @@ export const ModalImageWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const ModalImage = styled.img`
+  object-fit: contain;
+  height: 100%;
+`;
