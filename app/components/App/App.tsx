@@ -1,10 +1,10 @@
 import { useCallback, useState } from 'react';
 import { getRandomDogImageUrl } from '@/app/helpers';
-import { ButtonGroup as BreedListButtons } from '../ButtonGroup';
 import { ParsedBreedList } from './App.types';
 import { BreedDetailsModal } from '../BreedDetailsModal';
-import { AppWrapper } from './App.styles';
+import { AppTitle, AppWrapper } from './App.styles';
 import { AlphabetButtons } from '../AlphabetButtons';
+import { BreedListButtons } from '../BreedListButtons';
 
 export function App({ breedList } : {breedList: ParsedBreedList}) {
   const [clickedLetter, setClickedLetter] = useState('');
@@ -26,7 +26,7 @@ export function App({ breedList } : {breedList: ParsedBreedList}) {
 
   return (
     <AppWrapper>
-      <h1>Dog App</h1>
+      <AppTitle>Dog App</AppTitle>
       <AlphabetButtons
         onItemClick={handleAlphabetLetterClick}
         selectedItem={clickedLetter}
@@ -35,9 +35,6 @@ export function App({ breedList } : {breedList: ParsedBreedList}) {
         items={breedList[clickedLetter]}
         onItemClick={handleBreedNameClick}
         selectedItem={selectedBreed}
-        variant="outlined"
-        selectedItemVariant="contained"
-        orientation="vertical"
       />
 
       {isModalOpen && selectedBreed ? (

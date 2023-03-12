@@ -1,6 +1,6 @@
 import { genCharArray } from '@/app/helpers';
 import { useMemo } from 'react';
-import { StyledButtonGroup } from './AlphabetButtons.styles';
+import { AlphabetButtonsWrapper, StyledButtonGroup } from './AlphabetButtons.styles';
 import { AlphabetButtonsProps } from './AlphabetButtons.types';
 
 export function AlphabetButtons({
@@ -10,12 +10,15 @@ export function AlphabetButtons({
   const alphabetList = useMemo(() => genCharArray('a', 'z'), []);
 
   return (
-    <StyledButtonGroup
-      items={alphabetList}
-      onItemClick={onItemClick}
-      selectedItem={selectedItem}
-      variant="outlined"
-      selectedItemVariant="contained"
-    />
+    <AlphabetButtonsWrapper>
+      <h2>{selectedItem ? `Selected filter: ${selectedItem.toUpperCase()}` : 'Select filter from the list below:'}</h2>
+      <StyledButtonGroup
+        items={alphabetList}
+        onItemClick={onItemClick}
+        selectedItem={selectedItem}
+        variant="outlined"
+        selectedItemVariant="contained"
+      />
+    </AlphabetButtonsWrapper>
   );
 }

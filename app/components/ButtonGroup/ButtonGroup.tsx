@@ -13,6 +13,7 @@ export function ButtonGroup({
   return (
     <MuiButtonGroup
       variant={variant}
+      size="large"
       {...props}
     >
       {items.map((itemName) => (

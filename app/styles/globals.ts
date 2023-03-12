@@ -97,6 +97,7 @@ body {
     )
     rgb(var(--background-start-rgb));
   padding: 12px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 a {
